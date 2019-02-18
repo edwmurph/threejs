@@ -17,9 +17,6 @@
     "three": "0.101.1"
   },
   "devDependencies": {
-    "babel-core": "6.26.3",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-react": "6.24.1",
     "eslint": "5.3.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-airbnb-base": "13.1.0",
