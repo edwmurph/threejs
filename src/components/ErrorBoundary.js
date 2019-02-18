@@ -1,5 +1,8 @@
+import './ErrorBoundary.css';
+
 import React from 'react';
-import RenderableError from './util/renderableError';
+
+import RenderableError from '../util/renderableError';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -14,14 +17,18 @@ class ErrorBoundary extends React.Component {
     };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error) {
     // You can also log the error to an error reporting service
-    console.error(error, info);
+    console.error('ErrorBoundary: ', error);
   }
 
   render() {
     if (this.state.error) {
-      return (<h2>{this.state.error.renderMsg}</h2>);
+      return (
+        <div className="errorMsg">
+          <h2>{this.state.error.renderMsg}</h2>
+        </div>
+      );
     }
 
     return this.props.children;

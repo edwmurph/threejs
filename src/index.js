@@ -1,24 +1,20 @@
+import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ErrorBoundary from './ErrorBoundary';
-import ThreeCanvas from './ThreeCanvas';
-import '../scss/app.scss';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <div>
-          <h1>ThreeJS</h1>
-        </div>
-        <ErrorBoundary>
-          <ThreeCanvas />
-        </ErrorBoundary>
-      </div>
-    );
-  }
-}
+import rootReducer from './reducers/rootReducer';
+import App from './components/App';
 
-const app = document.getElementById('app');
+const initialState = {};
 
-ReactDOM.render(<App />, app);
+const store = createStore(rootReducer, initialState);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
