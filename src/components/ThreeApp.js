@@ -2,23 +2,24 @@ import './ThreeApp.css'
 
 import React from 'react'
 import { connect } from 'react-redux'
-
-import ThreeJS from '../threejs/ThreeJS'
+import ThreeJS from '../threejs'
 
 class ThreeApp extends React.Component {
   constructor(props) {
     super(props)
     this.ref = React.createRef()
-    this.threejs = new ThreeJS(timestamp => this.props.update({ timestamp }), this.ref)
+    this.threejs = new ThreeJS({
+      ref: this.ref,
+      newFrameHandler: timestamp => this.props.update({ timestamp }),
+    })
   }
 
   componentDidMount() {
     this.threejs.afterMount()
   }
 
-  componentWillUpdate() {
-    this.threejs.updateScene(this.props)
-    this.threejs.renderNextFrame()
+  componentDidUpdate() {
+    this.threejs.renderNextFrame(this.props)
   }
 
   componentWillUnmount() {
