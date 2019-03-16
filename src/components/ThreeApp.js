@@ -1,52 +1,39 @@
-import './ThreeApp.css';
+import './ThreeApp.css'
 
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import ThreeJS from '../threejs/ThreeJS';
-import utils from '../util/utils';
+import ThreeJS from '../threejs/ThreeJS'
 
 class ThreeApp extends React.Component {
   constructor(props) {
-    super(props);
-    this.elementId = 'three-display';
-    this.threejs = new ThreeJS(this.elementId);
-  }
-
-  renderNextFrame() {
-    this.threejs.render();
-    this.frameId = requestAnimationFrame(timestamp => this.props.update(timestamp));
+    super(props)
+    this.ref = React.createRef()
+    this.threejs = new ThreeJS(timestamp => this.props.update({ timestamp }), this.ref)
   }
 
   componentDidMount() {
-    utils.verifyEnv();
-
-    this.threejs.createThreeScene();
-    this.threejs.createThreeCamera();
-    this.threejs.createThreeRenderer();
-
-    this.renderNextFrame();
+    this.threejs.afterMount()
   }
 
   componentWillUpdate() {
-    this.threejs.updateScene(this.props.mouse);
-    this.renderNextFrame();
+    this.threejs.updateScene(this.props)
+    this.threejs.renderNextFrame()
   }
 
   componentWillUnmount() {
-    if (this.frameId) {
-      cancelAnimationFrame(this.frameId);
-    }
+    this.threejs.cleanup()
   }
 
   render() {
     return (
       <div
-        id={this.elementId}
+        id='three-display'
         className='three-display'
         onMouseDown={this.props.onMouseMove}
+        ref={this.ref}
       />
-    );
+    )
   }
 }
 
@@ -54,7 +41,7 @@ function mapStateToProps(state) {
   return {
     timestamp: state.timestamp,
     mouse: state.mouse,
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -70,7 +57,7 @@ function mapDispatchToProps(dispatch) {
         y: e.screenY,
       },
     }),
-  };
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThreeApp);
+export default connect(mapStateToProps, mapDispatchToProps)(ThreeApp)

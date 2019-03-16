@@ -1,38 +1,34 @@
-import './ErrorBoundary.css';
+import './ErrorBoundary.css'
 
-import React from 'react';
-
-import RenderableError from '../util/renderableError';
+import React from 'react'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { error: false };
+    super(props)
+    this.state = { error: false }
   }
 
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI.
-    return {
-      error: error instanceof RenderableError ? error : new RenderableError(),
-    };
+    return { error }
   }
 
   componentDidCatch(error) {
     // You can also log the error to an error reporting service
-    console.error('ErrorBoundary: ', error);
+    console.error('ErrorBoundary: ', error)
   }
 
   render() {
     if (this.state.error) {
       return (
         <div className="errorMsg">
-          <h2>{this.state.error.renderMsg}</h2>
+          <h2>{this.state.error.message}</h2>
         </div>
-      );
+      )
     }
 
-    return this.props.children;
+    return this.props.children
   }
 }
 
-export default ErrorBoundary;
+export default ErrorBoundary
