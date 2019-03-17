@@ -1,9 +1,7 @@
-import './ThreeJSComponent.css'
-
 import React from 'react'
 import { connect } from 'react-redux'
 
-class ThreeJSComponent extends React.Component {
+class Component extends React.Component {
   constructor(props) {
     super(props)
     this.ref = React.createRef()
@@ -27,10 +25,7 @@ class ThreeJSComponent extends React.Component {
 
   render() {
     return (
-      <div
-        ref={this.ref}
-        onMouseDown={this.props.mouseDown}
-      />
+      <div ref={this.ref} onMouseDown={this.props.mouseDown} />
     )
   }
 }
@@ -58,4 +53,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThreeJSComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(Component)

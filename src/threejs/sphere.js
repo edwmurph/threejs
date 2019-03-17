@@ -1,8 +1,7 @@
 import * as THREE from 'three'
-import ThreeJS from './threejs'
+import ThreeJS from './library/threejs'
 
 export default class Sphere extends ThreeJS {
-  // call inside componentDidUpdate()
   renderNextFrame({ timestamp, mouse = {}, dimensions }) {
     if (mouse.x) {
       console.log(mouse)

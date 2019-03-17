@@ -1,22 +1,17 @@
 import './App.css'
 
 import React from 'react'
-import ThreeJSComponent from './ThreeJSComponent'
+import SafeThreeJS from '../threejs/library/SafeThreeJS'
 import Sphere from '../threejs/sphere'
-import ErrorBoundary from './ErrorBoundary'
 import Header from './Header'
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
         <Header />
-        <ErrorBoundary>
-          <ThreeJSComponent ThreeJS={Sphere}/>
-        </ErrorBoundary>
+        <SafeThreeJS ThreeJS={Sphere}/>
       </div>
     )
   }
 }
-
-export default App

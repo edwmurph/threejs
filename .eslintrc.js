@@ -7,9 +7,9 @@ module.exports = {
     'no-unused-vars': 1, // recommended
     'arrow-spacing': ['error', { before: true, after: true }], // recommended
     indent: ['error', 2],
+    'space-in-parens': ['off'],
 
-    // options to emulate prettier setup
-    semi: ['error', 'never'],
+    semi: ['warn', 'never'],
     'template-curly-spacing': ['error', 'always'],
     'arrow-parens': ['error', 'as-needed'],
     'comma-dangle': ['off'],
