@@ -10,7 +10,7 @@ class ThreeApp extends React.Component {
     this.ref = React.createRef()
     this.threejs = new ThreeJS({
       ref: this.ref,
-      newFrameHandler: timestamp => this.props.update({ timestamp }),
+      newFrameHook: timestamp => this.props.update({ timestamp }),
     })
   }
 
@@ -29,8 +29,6 @@ class ThreeApp extends React.Component {
   render() {
     return (
       <div
-        id='three-display'
-        className='three-display'
         onMouseDown={this.props.onMouseMove}
         ref={this.ref}
       />

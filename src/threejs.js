@@ -15,8 +15,8 @@ function verifyEnv() {
 
 export default class {
 
-  constructor({ ref, newFrameHandler }) {
-    this.newFrameHandler = newFrameHandler
+  constructor({ ref, newFrameHook }) {
+    this.newFrameHook = newFrameHook
     this.ref = ref
     this.camera = {};
   }
@@ -37,11 +37,11 @@ export default class {
     this.ref.current.appendChild(this.renderer.domElement)
 
     this.renderer.render(this.scene, this.camera)
-    this.frameId = requestAnimationFrame(this.newFrameHandler)
+    this.frameId = requestAnimationFrame(this.newFrameHook)
   }
 
   // call inside componentDidUpdate()
-  renderNextFrame({ mouse = {} }) {
+  renderNextFrame({ mouse = {}, dimensions }) {
     if (mouse.x) {
       console.log(mouse)
     }
@@ -49,7 +49,7 @@ export default class {
     this.mesh.rotation.y += 0.001
 
     this.renderer.render(this.scene, this.camera)
-    this.frameId = requestAnimationFrame(this.newFrameHandler)
+    this.frameId = requestAnimationFrame(this.newFrameHook)
   }
 
   // call inside componentWillUnmount()
@@ -89,7 +89,7 @@ export default class {
 
   onResize() {
     this.width = window.innerWidth
-    this.height = window.innerHeight - 200
+    this.height = Math.max(window.innerHeight - 200, 200)
     this.camera.aspect = this.width / this.height
     this.camera.updateProjectionMatrix()
     this.renderer.setSize(this.width, this.height)
