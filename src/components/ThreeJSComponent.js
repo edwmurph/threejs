@@ -1,17 +1,16 @@
-import './ThreeApp.css'
+import './ThreeJSComponent.css'
 
 import React from 'react'
 import { connect } from 'react-redux'
-import ThreeJS from '../threejs'
 
-class ThreeApp extends React.Component {
+class ThreeJSComponent extends React.Component {
   constructor(props) {
     super(props)
     this.ref = React.createRef()
-    this.threejs = new ThreeJS({
-      ref: this.ref,
-      newFrameHook: timestamp => this.props.update({ timestamp }),
-    })
+    this.threejs = new this.props.ThreeJS(
+      this.ref,
+      timestamp => this.props.update({ timestamp }),
+    )
   }
 
   componentDidMount() {
@@ -29,8 +28,8 @@ class ThreeApp extends React.Component {
   render() {
     return (
       <div
-        onMouseDown={this.props.onMouseMove}
         ref={this.ref}
+        onMouseDown={this.props.mouseDown}
       />
     )
   }
@@ -49,7 +48,7 @@ function mapDispatchToProps(dispatch) {
       type: 'TIMESTAMP',
       timestamp,
     }),
-    onMouseMove: e => dispatch({
+    mouseDown: e => dispatch({
       type: 'MOUSE_DOWN',
       mouse: {
         x: e.screenX,
@@ -59,4 +58,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThreeApp)
+export default connect(mapStateToProps, mapDispatchToProps)(ThreeJSComponent)

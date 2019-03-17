@@ -1,7 +1,8 @@
 import './App.css'
 
 import React from 'react'
-import ThreeApp from './ThreeApp'
+import ThreeJSComponent from './ThreeJSComponent'
+import Sphere from '../threejs/sphere'
 import ErrorBoundary from './ErrorBoundary'
 import Header from './Header'
 
@@ -11,7 +12,7 @@ class App extends React.Component {
       <div>
         <Header />
         <ErrorBoundary>
-          <ThreeApp />
+          <ThreeJSComponent ThreeJS={Sphere}/>
         </ErrorBoundary>
       </div>
     )
