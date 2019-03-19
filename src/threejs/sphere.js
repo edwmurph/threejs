@@ -1,15 +1,15 @@
 import * as THREE from 'three'
-import trr from 'trr'
+import { ThreeJSR } from 'threeJSR'
 
-export default class Sphere extends trr.ThreeJS {
-  renderNextFrame({ timestamp, mouse = {}, dimensions }) {
-    if (mouse.x) {
-      console.log(mouse)
+export default class Sphere extends ThreeJSR {
+  renderNextFrame({ threejsr }) {
+    if (threejsr.mouse) {
+      console.log('inside sphere: ', threejsr.mouse)
     }
     this.mesh.rotation.x += 0.001
     this.mesh.rotation.y += 0.001
 
-    return super.renderNextFrame(timestamp)
+    return super.renderNextFrame(threejsr)
   }
 
   createThreeScene() {
