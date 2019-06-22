@@ -1,8 +1,8 @@
 # threejs
 
-Boilerplate code for a project with ThreeJS, React, Redux and Parcel.
+Boilerplate code for a project with ThreeJS, ReactN, GatsbyJS, and Bootstrap.
 
-![screenshot](./public/demo.gif)
+![screenshot](./threejs.gif)
 
 ## Installation
 

@@ -1,33 +1,42 @@
 import * as THREE from 'three'
-import { ThreeJSR } from 'threeJSR'
+import { ThreeJSR } from 'threejs-r'
 
 export default class Sphere extends ThreeJSR {
-  renderNextFrame({ threejsr }) {
-    if (threejsr.mouse) {
-      console.log('inside sphere: ', threejsr.mouse)
+  renderNextFrame (threejsr) {
+    if (this.change < 100) {
+      this.spotLight.position.set(0, 50, this.change)
+      this.change = this.change + 0.5
     }
+
+    if (threejsr.color) {
+      this.mesh.material.color.set(threejsr.color)
+    }
+
     this.mesh.rotation.x += 0.001
     this.mesh.rotation.y += 0.001
 
     return super.renderNextFrame(threejsr)
   }
 
-  createThreeScene() {
+  createThreeScene () {
+    this.change = 0
     this.scene = new THREE.Scene()
 
-    this.camera = new THREE.PerspectiveCamera(75, 0, 0.1, 1000)
-    this.camera.position.z = 100
+    const ambient = new THREE.AmbientLight(0xffffff, 0.1)
+    this.scene.add(ambient)
 
-    // PARAMS: radius, horizontal, vertial
+    this.spotLight = new THREE.SpotLight(0xffffff)
+    this.spotLight.position.set(20, 20, 60)
+    this.spotLight.position.set(0, 50, 0)
+    this.scene.add(this.spotLight)
+
+    this.camera = new THREE.PerspectiveCamera(75, 0, 0.1, 1000)
+    this.camera.position.set(0, 0, 100)
+
     const geometry = new THREE.SphereGeometry(40, 50, 30)
     const material = new THREE.MeshLambertMaterial({ color: 0xffffff, wireframe: true })
 
     this.mesh = new THREE.Mesh(geometry, material)
     this.scene.add(this.mesh)
-
-    const spotLight = new THREE.SpotLight(0xffffff)
-    spotLight.position.set(100, 10, 100)
-
-    this.scene.add(spotLight)
   }
 }

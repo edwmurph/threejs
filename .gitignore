@@ -2,8 +2,8 @@
 .DS_Store
 node_modules/*
 
-# Parcel
-dist/
-.cache/
+# Gatsby
+.cache
+public/
 
 .git
