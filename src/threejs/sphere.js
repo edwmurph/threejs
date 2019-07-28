@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { ThreeJSR } from 'threejs-r'
+import { ThreeJSR } from '@edwmurph/threejsr'
 
 export default class Sphere extends ThreeJSR {
   renderNextFrame (threejsr) {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Sphere from '../threejs/sphere'
-import { ThreeJSRComponent } from 'threejs-r'
+import { ThreeJSRComponent } from '@edwmurph/threejsr'
 
 export default function () {
   const [color, setColor] = useState()

@@ -18,7 +18,7 @@
     "react": "16.8.6",
     "react-redux": "7.1.0",
     "three": "0.105.2",
-    "threejs-r": "3.0.0"
+    "@edwmurph/threejsr": "0.0.3"
   },
   "devDependencies": {
     "babel-eslint": "10.0.2",
