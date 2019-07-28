@@ -1,14 +1,15 @@
-import React, { useGlobal, useState } from 'reactn'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Sphere from '../threejs/sphere'
 import { ThreeJSRComponent } from 'threejs-r'
 
 export default function () {
-  const [, setThreejsr] = useGlobal('threejsr')
   const [color, setColor] = useState()
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setThreejsr({ color })
+    dispatch({ type: 'THREEJSR', threejsr: { color } })
   }
 
   return (

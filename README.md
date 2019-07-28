@@ -1,6 +1,6 @@
 # threejs
 
-Boilerplate code for a project with ThreeJS, ReactN, GatsbyJS, and Bootstrap.
+Boilerplate code for a project with ThreeJS, React, React Redux Hooks, GatsbyJS, and Bootstrap.
 
 ![screenshot](./threejs.gif)
 
