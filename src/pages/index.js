@@ -1,20 +1,22 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import Sphere from '../threejs/sphere'
-import { ThreeJSRComponent } from '@edwmurph/threejsr'
+import React, { useState } from 'react';
+import { ThreeJSRComponent } from '@edwmurph/threejsr';
+import Sphere from '../threejs/sphere';
 
-export default function () {
-  const [color, setColor] = useState()
-  const dispatch = useDispatch()
+const Index = () => {
+  const [color, setColor] = useState('white');
+  const [renderLoopData, setRenderLoopData] = useState({});
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch({ type: 'THREEJSR', threejsr: { color } })
-  }
+    e.preventDefault();
+    setRenderLoopData({ color });
+  };
 
   return (
     <div>
-      <ThreeJSRComponent ThreeJSR={Sphere} />
+      <ThreeJSRComponent
+        ThreeJSR={Sphere}
+        renderLoopData={renderLoopData }
+      />
       <div className='text-center'>
         <form className='m-5 p-5' onSubmit={handleSubmit}>
           <input name='color' onChange={(e) => setColor(e.target.value)} />
@@ -26,5 +28,7 @@ export default function () {
         <h1 className='text-light m-5 p-5'>asdf</h1>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Index;

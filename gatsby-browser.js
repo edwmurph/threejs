@@ -1,2 +1,2 @@
-import './src/styles/global.scss'
-import 'bootstrap'
+import './src/styles/global.scss';
+import 'bootstrap';
