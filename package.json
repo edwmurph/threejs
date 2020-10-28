@@ -9,19 +9,19 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@edwmurph/threejsr": "0.0.19",
-    "bootstrap": "4.5.0",
-    "gatsby": "2.24.7",
-    "gatsby-plugin-sass": "2.3.12",
+    "@edwmurph/threejsr": "0.0.21",
+    "bootstrap": "4.5.3",
+    "gatsby": "2.24.90",
+    "gatsby-plugin-sass": "2.3.21",
     "jquery": "3.5.1",
     "node-sass": "4.14.1",
     "popper.js": "1.16.1",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "three": "0.118.3"
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "three": "0.121.1"
   },
   "devDependencies": {
-    "@edwmurph/eslint-config": "0.0.1"
+    "@edwmurph/eslint-config": "0.0.10"
   },
   "author": "edward",
   "license": "ISC",

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { ThreeJSR } from '@edwmurph/threejsr';
 
-export default class Sphere extends ThreeJSR {
+class Sphere extends ThreeJSR {
   renderNextFrame({ timestamp, color }) {
     if (this.change < 100) {
       this.spotLight.position.set(0, 50, this.change);
@@ -41,3 +41,5 @@ export default class Sphere extends ThreeJSR {
     this.scene.add(this.mesh);
   }
 }
+
+export default new Sphere();
